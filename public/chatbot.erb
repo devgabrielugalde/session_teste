@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CHATBOT</title>
+</head>
+<body>
+
+	<div id="escopochatbot"></div>
+
+	<script type="text/javascript">
+		
+		window.onload = start;
+
+		var escopochatbot = document.getElementById('escopochatbot');
+
+		function start(){
+			mensagemOla("<%=@nome_caboco%>", "<%=@email_caboco%>");
+		}
+
+		function criaElementoHTML(elemento, id, classe, href, click){
+			var elemento = document.createElement(elemento);
+			elemento.setAttribute("id", id);
+			elemento.setAttribute("classe", classe);
+			elemento.setAttribute("href", href);
+			if (elemento == "button") {
+				elemento.onclick = function(){
+					click();
+				}
+			}
+		}
+
+		function mensagemOla(nome, email){
+			var p = document.createElement("p");
+			p.setAttribute("id", "msgOla");
+			p.innerHTML = "Olá <b>" + nome + "</b>, seja bem vindo ao chatbot! Seu email: <b>" + email + "</b> ";
+			escopochatbot.appendChild(p);
+		}
+
+	</script>
+
+</body>
+</html>
