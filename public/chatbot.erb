@@ -17,18 +17,6 @@
 			mensagemOla("<%=@nome_caboco%>", "<%=@email_caboco%>");
 		}
 
-		function criaElementoHTML(elemento, id, classe, href, click){
-			var elemento = document.createElement(elemento);
-			elemento.setAttribute("id", id);
-			elemento.setAttribute("classe", classe);
-			elemento.setAttribute("href", href);
-			if (elemento == "button") {
-				elemento.onclick = function(){
-					click();
-				}
-			}
-		}
-
 		function mensagemOla(nome, email){
 			var p = document.createElement("p");
 			p.setAttribute("id", "msgOla");
