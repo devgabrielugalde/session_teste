@@ -1,11 +1,11 @@
 require 'sinatra'
 set :views, 'public/'
 
-enable :sessions
+use Rack::Session::Cookie, :key => 'rack.session',
+                           :path => '/',
+                           :secret => 'another'
 
 get '/' do
-	# session["nome"] = "Gabriel"
-	# "<a href='/rota1'>Rota 1</a>"
 	erb :index
 end
 
@@ -20,20 +20,8 @@ get '/index_auth' do
 end
 
 get '/chatbot' do
-	nome_caboco = session["nome"]
-	email_caboco = session["email"]
-
-	puts @nome_caboco
-	puts @email_caboco
+	@nome_caboco = session["nome"]
+	@email_caboco = session["email"]
 
 	erb :chatbot
-end
-
-get '/rota1' do
-	nome = session["nome"]
-	"<a href='rota2'>Blz peguei o nome #{nome} que veio da sessão! Agora vá para a Rota 2 e teste pegar lá também o nome que está na sessão</a>"
-end
-
-get '/rota2' do
-	"#{session['nome']}"
 end
