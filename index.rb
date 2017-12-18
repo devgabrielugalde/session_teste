@@ -1,9 +1,6 @@
 require 'sinatra'
 set :views, 'public/'
-
-use Rack::Session::Cookie, :key => 'rack.session',
-                           :path => '/',
-                           :secret => 'another'
+enable :sessions
 
 get '/' do
 	erb :index
